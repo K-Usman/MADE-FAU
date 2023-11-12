@@ -15,7 +15,7 @@ Base=declarative_base()
 #Creating Airport class this will be the query
 class Airport(Base):
     __tablename__="airports"
-    
+#Added a primary key as sql alchemy do not run without primary key
     id=Column("Id",Integer,primary_key=True)
     column1=Column("column_1",Integer)
     column2=Column("column_2",TEXT)
@@ -52,7 +52,7 @@ class Airport(Base):
         return f"({self.id},{self.column1},{self.column2},{self.column3},{self.column4},{self.column5},{self.column6},{self.column7},{self.column8},{self.column9},{self.column10},{self.column11},{self.column12},{self.geopunkt})"
 
 #Creating sql alchemy engine object to connect to databases
-engine=create_engine("sqlite:///airports.db",echo=True)
+engine=create_engine("sqlite:///airports.sqlite",echo=True)
 Base.metadata.create_all(bind=engine)
 Session=sessionmaker(bind=engine)
 session=Session()
