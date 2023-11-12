@@ -16,19 +16,19 @@ Base=declarative_base()
 class Airport(Base):
     __tablename__="airports"
 #Added a primary key as sql alchemy do not run without primary key
-    id=Column("Id",Integer,primary_key=True)
-    column1=Column("column_1",Integer)
+    id=Column("Id",BIGINT,primary_key=True)
+    column1=Column("column_1",BIGINT)
     column2=Column("column_2",TEXT)
-    column3=Column("column_3",VARCHAR)
-    column4=Column("column_4",VARCHAR)
-    column5=Column("column_5",VARCHAR)
-    column6=Column("column_6",VARCHAR)
+    column3=Column("column_3",TEXT)
+    column4=Column("column_4",TEXT)
+    column5=Column("column_5",TEXT)
+    column6=Column("column_6",TEXT)
     column7=Column("column_7",BIGINT)
     column8=Column("column_8",BIGINT)
-    column9=Column("column_9",Integer)
+    column9=Column("column_9",BIGINT)
     column10=Column("column_10",FLOAT)
-    column11=Column("column_11",CHAR)
-    column12=Column("column_12",VARCHAR)
+    column11=Column("column_11",TEXT)
+    column12=Column("column_12",TEXT)
     geopunkt=Column("geo_punkt",TEXT)
 
     def __init__(self,id,column1,column2,column3,column4,column5,column6,column7,column8,column9,column10,column11,column12,geopunkt):
