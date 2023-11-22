@@ -1,24 +1,22 @@
 # Project Plan
 
 ## Title
-Shopping behavior Analysis
+Wind Energy Production in Northern and Southern Germany.
 
 ## Main Question
-How weather is correlated to shopping?
+What is the difference in the production of wind energy in coastal(North) and planes or elevated areas(South)?
 ## Description 
-This analysis will help us analyze how weather is related to shopping. This can be used for marketing campaigns and price analysis and product demand in different
-times of the year and in different seasons.
+This analysis will help us determine the requirement of wind turbines generators in two parts of country. This will be beneficial to see what areas of north and south are producing more energy and needs more generators.
 ## Data Sources
-## Data Source 1-Shopping Dataset
+## Data Source 1-Schleswig-Holstein Wind turbines
 Meta Data: \
-Data URL: https://www.kaggle.com/datasets/mehmettahiraslan/customer-shopping-dataset \
+Data URL: https://opendata.zitsh.de/data/llur72/WKA-OpenData_2019-12-10.xlsx \
+Data type: xlsx \
+This dataset contains information about wind turbines installed in different regions of Schleswig-Holstein including MWs, Location etc
+## Data Source 2-Bavaria Wind Turbines
+Meta Data: \
+Data URL: https://www.karten.energieatlas.bayern.de/start/?c=677751,5422939&z=7&l=atkis&t=energie&comp=recherche \
 Data type: CSV \
-This dataset contains shopping data from different malls of istanbul with fields like gender, category 
-## Data Source 2-Weather Data
-Meta Data: \
-Data URL: https://www.weatherapi.com/ \
-Data type: API/CSV \
-I will extract the weather information through weather api and store it in a csv according to the corresponding invoice dates in shopping dataset.
+This dataset contains information about wind turbines installed in different regions of bavaria including MWs, Location etc
 ## Work Packages
-1. Weather Data Extraction [Issue#!](https://github.com/K-Usman/MADE-FAU/issues/1#issue-1983814992)
-2. Explore Dataset [Issue#2](https://github.com/K-Usman/MADE-FAU/issues/2)
+
