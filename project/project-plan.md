@@ -19,4 +19,6 @@ Data URL: https://www.karten.energieatlas.bayern.de/start/?c=677751,5422939&z=7&
 Data type: CSV \
 This dataset contains information about wind turbines installed in different regions of bavaria including MWs, Location etc
 ## Work Packages
+1. Explore Datasets [Issue#1](https://github.com/K-Usman/MADE-FAU/issues/2)
+2. Data Pre-Processing [Issue#2](https://github.com/K-Usman/MADE-FAU/issues/1)
 
