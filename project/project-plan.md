@@ -15,7 +15,7 @@ Data type: xlsx \
 This dataset contains information about wind turbines installed in different regions of Schleswig-Holstein including MWs, Location etc
 ## Data Source 2-Bavaria Wind Turbines
 Meta Data: \
-Data URL: https://www.karten.energieatlas.bayern.de/start/?c=677751,5422939&z=7&l=atkis&t=energie&comp=recherche \
+Data URL: https://www.karten.energieatlas.bayern.de/eab-module/recherche?1-1.1-tabs-tabs-repeater2-2-panelfragment-panel-contentContainer-panel-downloadContainer&antiCache=1700697684719 \
 Data type: CSV \
 This dataset contains information about wind turbines installed in different regions of bavaria including MWs, Location etc
 ## Work Packages
