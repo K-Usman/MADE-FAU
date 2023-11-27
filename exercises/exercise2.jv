@@ -1,0 +1,61 @@
+pipeline downloadCsv{
+    csvextractor
+        ->textfile
+        ->csvfile
+        ->StatusDeleter
+        ->tableinterpret
+        ->csvloader;
+
+    block csvextractor oftype HttpExtractor{
+        url: "https://download-data.deutschebahn.com/static/datasets/haltestellen/D_Bahnhof_2020_alle.CSV";
+    }
+    block textfile oftype TextFileInterpreter{
+
+    }
+    block csvfile oftype CSVInterpreter{
+        delimiter:";";
+    }
+    block StatusDeleter oftype ColumnDeleter {
+   delete: [column J];
+    }
+
+
+    block tableinterpret oftype TableInterpreter{
+        header:true;
+        columns:[
+            "EVA_NR" oftype integer,
+            "DS100" oftype text,
+            "IFOPT" oftype IFOPTType,
+            "NAME" oftype text,
+            "Verkehr" oftype VerkehrType,
+            "Laenge" oftype LaengeBereitType,
+            "Breite" oftype LaengeBereitType,
+            "Betreiber_Name" oftype text,
+            "Betreiber_Nr" oftype integer,
+        ];
+    }
+    block csvloader oftype SQLiteLoader {
+        table: "trainstops";
+        file: "./trainstops.sqlite";
+    }
+
+}
+    valuetype VerkehrType oftype text{
+        constraints:[ Verkehr];
+    }
+    valuetype LaengeBereitType oftype integer{
+        constraints:[ LaengeBereit];
+    }
+    valuetype IFOPTType oftype text{
+        constraints:[ IFOPT];
+    }
+    constraint Verkehr oftype AllowlistConstraint {
+    allowlist: ["FV", "RV", "nur DPN"];
+    }
+    constraint LaengeBereit oftype RangeConstraint {
+    lowerBound: -90;
+    upperBound: 90;
+    }
+    constraint IFOPT oftype RegexConstraint {
+   regex: /^[a-zA-Z]{2}:\d+:\d+(?::\d+)?$/;
+    }
