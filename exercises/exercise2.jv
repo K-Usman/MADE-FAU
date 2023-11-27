@@ -43,7 +43,7 @@ pipeline downloadCsv{
     valuetype VerkehrType oftype text{
         constraints:[ Verkehr];
     }
-    valuetype LaengeBereitType oftype integer{
+    valuetype LaengeBereitType oftype decimal{
         constraints:[ LaengeBereit];
     }
     valuetype IFOPTType oftype text{
