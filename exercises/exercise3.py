@@ -35,7 +35,7 @@ def data_cleaning(data):
 
 
 def load_data(data):
-    connection=sqlite3.connect('../data/cars.sqlite')
+    connection=sqlite3.connect('cars.sqlite')
     data.to_sql("cars",connection,if_exists="replace")
     connection.close()
 
