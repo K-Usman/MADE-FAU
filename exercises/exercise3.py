@@ -15,9 +15,9 @@ def data_cleaning(data):
     'CIN': str,
     'name': str
                 }
-    data=data.astype(str_types)
-    cinValidation=data['CIN'].str.match(r'^0?\d{4}$')
-    data=data[cinValidation]
+    # data=data.astype(str_types)
+    # cinValidation=data['CIN'].str.match(r'^0?\d{5}$')
+    # data=data[cinValidation]
     int_columns=['petrol','diesel','gas','electro','hybrid','plugInHybrid','others']
     data[int_columns]=data[int_columns].apply(pd.to_numeric, errors='coerce')
     data=data.dropna()
@@ -36,7 +36,7 @@ def data_cleaning(data):
 
 def load_data(data):
     connection=sqlite3.connect('../data/cars.sqlite')
-    data.to_sql("cars",connection,if_exists="replace")
+    data.to_sql("cars",connection,if_exists="replace",index=False)
     connection.close()
 
 
