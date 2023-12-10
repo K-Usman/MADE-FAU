@@ -10,12 +10,11 @@ def data_cleaning(data):
     column_names={0:'date',1:'CIN',2:'name',12:'petrol',22:'diesel',32:'gas',42:'electro',52:'hybrid',62:'plugInHybrid',72:'others'}
     data=data.rename(columns=column_names)
     data=data[['date','CIN','name','petrol','diesel','gas','electro','hybrid','plugInHybrid','others']]
-    str_types = {
+    string_types = {
     'date': str,
     'CIN': str,
-    'name': str
-                }
-    # data=data.astype(str_types)
+    'name': str}
+    data=data.astype(string_types)
     # cinValidation=data['CIN'].str.match(r'^0?\d{5}$')
     # data=data[cinValidation]
     int_columns=['petrol','diesel','gas','electro','hybrid','plugInHybrid','others']
