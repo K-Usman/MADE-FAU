@@ -15,8 +15,8 @@ def data_cleaning(data):
     'CIN': str,
     'name': str}
     data=data.astype(string_types)
-    cinValidation=data['CIN'].str.match(r'^0?\d{5}$')
-    data=data[cinValidation]
+    # cinValidation=data['CIN'].str.match(r'^0?\d{5}$')
+    # data=data[cinValidation]
     '''validation 2'''
     int_columns=['petrol','diesel','gas','electro','hybrid','plugInHybrid','others']
     data[int_columns]=data[int_columns].apply(pd.to_numeric, errors='coerce')
