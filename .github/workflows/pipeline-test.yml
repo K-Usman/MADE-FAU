@@ -6,7 +6,6 @@ on:
      -main
     paths:
      -project/**
-     -.github/workflows/**
 
 jobs:
     testing-pipeline:
