@@ -1,1 +1,25 @@
+name: ETL Testing
 
+on:
+  push:
+    branches:
+     -main
+    paths:
+     -project/**
+
+jobs:
+    testing-pipeline:
+     runs-on: ubuntu-latest
+     steps:
+     - name: Checkout
+       uses: actions/checkout@v3
+       with:
+         path: main
+
+     - name: Run Test file
+       run: |
+         ./project/tests.sh
+       
+    
+  
+     
