@@ -3,9 +3,9 @@ name: ETL Testing
 on:
   push:
     branches:
-     - main
+    - main
     paths:
-     - project/**
+    - project/**
 
 jobs:
     testing-pipeline:
