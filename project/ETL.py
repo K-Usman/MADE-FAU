@@ -83,6 +83,4 @@ if __name__ == "__main__":
     load_schleswigData(selectedschleswigData,connection)
     connection.close()
     print("Data has been loaded!")
-
-
-
+#ETL done
