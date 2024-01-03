@@ -21,7 +21,7 @@ jobs:
           python-version: 3.11
       - name: Run Tests
         run: |
-           ls -R 
-           ./project/tests.sh
+          chmod +x ./project/tests.sh
+          ./project/tests.sh
 
 
