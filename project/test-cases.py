@@ -1,4 +1,4 @@
-from ProjectWork3 import download_bayernData,download_schleswigData,transform_bayernData,transform_schleswigData,load_bayernData,load_schleswigData,connect
+from ETL import download_bayernData,download_schleswigData,transform_bayernData,transform_schleswigData,load_bayernData,load_schleswigData,connect
 import unittest
 import os
 

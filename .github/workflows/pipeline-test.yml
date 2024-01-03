@@ -6,11 +6,7 @@ on:
       - main
     paths:
       - project/**
-  pull_request:
-    branches:
-      - main
-    paths:
-      - project/**
+      - .github/workflows/**
   
   
 jobs:
@@ -24,7 +20,7 @@ jobs:
         with:
           python-version: 3.11
       - name: Run Tests
-        run:
-          bash ./tests.sh
+        run: |
+           ../../project/tests.sh
 
 
