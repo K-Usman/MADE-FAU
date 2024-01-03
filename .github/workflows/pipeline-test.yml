@@ -25,6 +25,6 @@ jobs:
           python-version: 3.11
       - name: Run Tests
         run:
-          tests.sh
+          bash tests.sh
 
 
