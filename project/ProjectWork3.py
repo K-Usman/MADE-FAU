@@ -14,10 +14,7 @@ def download_bayernData(url):
     return bayern_data
 
 def download_schleswigData(url):
-    response=requests.get(url)
-    with open("../data/schleswigData.xlsx","wb") as file:
-        file.write(response.content)
-    schleswigData=pd.read_excel("../data/SchleswigData.xlsx")
+    schleswigData=pd.read_excel(url)
     return schleswigData
 
 

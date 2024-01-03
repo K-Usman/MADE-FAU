@@ -13,7 +13,7 @@ class TestETL(unittest.TestCase):
 
     def test_downloadSchleswigData(self):
         #Test downloading different xlsx file from url
-        test_cases=["https://www.statistik-nord.de/fileadmin/Dokumente/Statistische_Berichte/verkehr_umwelt_und_energie/H_I_1_m_S/H_I_1-m2309_SH.xlsx","https://www.statistik-nord.de/fileadmin/Dokumente/Statistische_Berichte/verkehr_umwelt_und_energie/H_II_2_vj_S/H_II_2_vj_23-2_SH.xlsx","https://www.statistik-nord.de/fileadmin/Dokumente/Statistische_Berichte/verkehr_umwelt_und_energie/H_II_1_S/H_II_1_hj_1_23_SH.xlsx"]
+        test_cases=["https://www.statistik-nord.de/fileadmin/Dokumente/Statistische_Berichte/verkehr_umwelt_und_energie/H_I_1_m_S/H_I_1-m2309_SH.xlsx","https://api.opendata.onisep.fr/downloads/605344579a7d7/605344579a7d7.xlsx","https://www.statistik-nord.de/fileadmin/Dokumente/Statistische_Berichte/verkehr_umwelt_und_energie/H_II_1_S/H_II_1_hj_1_23_SH.xlsx"]
         for test in test_cases:
             csvFile=download_schleswigData(test)
             self.assertTrue(str(type(csvFile)) == "<class 'pandas.core.frame.DataFrame'>")
