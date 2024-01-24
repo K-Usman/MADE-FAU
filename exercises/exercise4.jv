@@ -1,0 +1,74 @@
+pipeline Mowesta {
+    FileDownloader
+        -> ZipFileIntrepreter
+        -> DataFilePicker
+        -> DataTextFileInterpreter
+        -> DataCsvFileInterpreter
+        -> ColumnsDelete
+        -> DataHeaderWrite
+        -> DataTableInterpreter
+        -> DWDTemperatureConvert
+        -> BatteryTemperatureConvert
+        -> DataCsvLoader;
+
+    block FileDownloader oftype HttpExtractor{
+        url: "https://www.mowesta.com/data/measure/mowesta-dataset-20221107.zip";
+    }
+    block ZipFileIntrepreter oftype ArchiveInterpreter{
+
+        archiveType: "zip";
+    }
+    block DataFilePicker oftype FilePicker{
+        path: "/data.csv";
+    }
+    block DataTextFileInterpreter oftype TextFileInterpreter{
+
+    }
+    block DataCsvFileInterpreter oftype CSVInterpreter{
+        delimiter:";";
+    }
+    block ColumnsDelete oftype ColumnDeleter{
+        delete: [column F, column G, column H, column I];
+    }
+    block DataHeaderWrite oftype CellWriter{
+        at: range A1:G1;
+        write: ["Geraet","Hersteller","Model","Monat","Temperatur in °C (DWD)","Batterietemperatur in °C","Geraet aktiv"];
+    }
+    block DataTableInterpreter oftype TableInterpreter{
+        header:false;
+        columns:[
+            "Geraet" oftype GeraetAboveZeroType,
+            "Hersteller" oftype text,
+            "Model" oftype text,
+            "Monat" oftype integer,
+            "Temperatur" oftype decimal,
+            "Batterietemperatur" oftype decimal,
+            "Geraet aktiv" oftype text,
+        ];
+    }
+    block DWDTemperatureConvert oftype TableTransformer{
+        inputColumns: ["Temperatur"];
+        outputColumn: "Temperatur";
+        use: CelsiusToFahrenheit;
+    }
+    block BatteryTemperatureConvert oftype TableTransformer{
+        inputColumns: ["Batterietemperatur"];
+        outputColumn: "Batterietemperatur";
+        use: CelsiusToFahrenheit;
+    }
+    transform CelsiusToFahrenheit {
+        from Celsius oftype decimal;
+        to Fahrenheit oftype decimal;
+        Fahrenheit: (Celsius * 9/5) + 32;
+    }
+
+    block DataCsvLoader oftype SQLiteLoader {
+        table: "temperatures";
+        file: "./temperatures.sqlite";
+    }
+}
+    valuetype GeraetAboveZeroType oftype integer{
+        constraints: [GeraetAboveZeroConstraint];
+    }
+    constraint GeraetAboveZeroConstraint on integer:
+        value>0;
